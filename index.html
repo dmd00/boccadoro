@@ -280,81 +280,58 @@
     var SHOP = {
       domain: 'mesdvk-d2.myshopify.com',
       token: 'd061302ad16f0343c33dc23cc01263ec',
-      checkoutId: null
+      cartId: null
     };
 
-    // Create a new checkout session
-    function createCheckout() {
-      return fetch('https://' + SHOP.domain + '/api/2023-04/graphql.json', {
+    function gql(query, variables) {
+      return fetch('https://' + SHOP.domain + '/api/2024-04/graphql.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Shopify-Storefront-Access-Token': SHOP.token
         },
-        body: JSON.stringify({
-          query: 'mutation { checkoutCreate(input: {}) { checkout { id webUrl } } }'
-        })
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        SHOP.checkoutId = d.data.checkoutCreate.checkout.id;
-        SHOP.checkoutUrl = d.data.checkoutCreate.checkout.webUrl;
-        return SHOP.checkoutId;
-      });
+        body: JSON.stringify({ query: query, variables: variables || {} })
+      }).then(function(r) { return r.json(); });
     }
 
-    // Add a variant to the checkout and redirect
-    function addToCart(variantId, buttonEl) {
+    function createCart() {
+      return gql('mutation { cartCreate { cart { id checkoutUrl } } }')
+        .then(function(d) {
+          console.log('cartCreate response:', JSON.stringify(d, null, 2));
+          SHOP.cartId = d.data.cartCreate.cart.id;
+          SHOP.checkoutUrl = d.data.cartCreate.cart.checkoutUrl;
+          return SHOP.cartId;
+        });
+    }
+
+    function addToCart(merchandiseId, buttonEl) {
       buttonEl.textContent = 'Adding...';
       buttonEl.disabled = true;
 
-      function doAdd(checkoutId) {
-        console.log('doAdd called with checkoutId:', checkoutId, 'variantId:', variantId);
-        return fetch('https://' + SHOP.domain + '/api/2023-04/graphql.json', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Shopify-Storefront-Access-Token': SHOP.token
-          },
-          body: JSON.stringify({
-            query: 'mutation checkoutLineItemsAdd($checkoutId: ID!, $lineItems: [CheckoutLineItemInput!]!) { checkoutLineItemsAdd(checkoutId: $checkoutId, lineItems: $lineItems) { checkout { webUrl } userErrors { field message } } }',
-            variables: {
-              checkoutId: checkoutId,
-              lineItems: [{ variantId: variantId, quantity: 1 }]
-            }
-          })
-        })
-        .then(function(r) { return r.json(); })
+      function doAdd(cartId) {
+        console.log('Adding to cart:', cartId, merchandiseId);
+        return gql(
+          'mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) { cartLinesAdd(cartId: $cartId, lines: $lines) { cart { checkoutUrl } userErrors { field message } } }',
+          { cartId: cartId, lines: [{ merchandiseId: merchandiseId, quantity: 1 }] }
+        )
         .then(function(d) {
-          console.log('addToCart response:', JSON.stringify(d, null, 2));
-          if (d.errors) {
-            console.error('GraphQL errors:', d.errors);
-            buttonEl.textContent = 'Error — try again';
-            buttonEl.disabled = false;
-            return;
-          }
-          if (d.data.checkoutLineItemsAdd.userErrors.length > 0) {
-            console.error('User errors:', d.data.checkoutLineItemsAdd.userErrors);
-            buttonEl.textContent = 'Error — try again';
-            buttonEl.disabled = false;
-            return;
-          }
-          var url = d.data.checkoutLineItemsAdd.checkout.webUrl;
-          console.log('Redirecting to:', url);
-          window.location.href = url;
+          console.log('cartLinesAdd response:', JSON.stringify(d, null, 2));
+          if (d.errors) { throw new Error(JSON.stringify(d.errors)); }
+          if (d.data.cartLinesAdd.userErrors.length > 0) { throw new Error(JSON.stringify(d.data.cartLinesAdd.userErrors)); }
+          window.location.href = d.data.cartLinesAdd.cart.checkoutUrl;
         })
         .catch(function(err) {
-          console.error('Fetch error:', err);
+          console.error('addToCart error:', err);
           buttonEl.textContent = 'Error — try again';
           buttonEl.disabled = false;
         });
       }
 
-      if (SHOP.checkoutId) {
-        doAdd(SHOP.checkoutId);
+      if (SHOP.cartId) {
+        doAdd(SHOP.cartId);
       } else {
-        createCheckout().then(function(id) { doAdd(id); }).catch(function(err) {
-          console.error('Checkout creation error:', err);
+        createCart().then(function(id) { doAdd(id); }).catch(function(err) {
+          console.error('Cart creation error:', err);
           buttonEl.textContent = 'Error — try again';
           buttonEl.disabled = false;
         });
@@ -362,7 +339,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      createCheckout();
+      createCart();
     });
 
     var toggle = document.getElementById('navToggle');
