@@ -84,8 +84,6 @@
     .product-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--espresso); margin-bottom: 0.3rem; }
     .product-sub { font-size: 11px; color: var(--brown-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
     .product-price { font-size: 17px; color: var(--espresso); margin-bottom: 1.25rem; }
-    .shopify-buy-btn-wrap { width: 100%; }
-    .shopify-buy-btn-wrap > div { max-width: 100% !important; margin: 0 !important; }
 
     footer { background: var(--espresso); color: #C4B898; padding: 3rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--cream-dark); text-decoration: none; display: block; margin-bottom: 6px; }
@@ -237,9 +235,7 @@
           <div class="product-name">Extra Vergine</div>
           <div class="product-sub">250ml · Cold Pressed · Single Grove</div>
           <div class="product-price">$35.00</div>
-          <div class="shopify-buy-btn-wrap">
-            <div id="product-component-1774911721220"></div>
-          </div>
+          <button class="btn-cart" onclick="addToCart('gid://shopify/ProductVariant/45162134700079', this)">Add to Cart</button>
         </div>
       </div>
 
@@ -252,9 +248,7 @@
           <div class="product-name">Extra Vergine</div>
           <div class="product-sub">500ml · Cold Pressed · Single Grove</div>
           <div class="product-price">$60.00</div>
-          <div class="shopify-buy-btn-wrap">
-            <div id="product-component-1774911767340"></div>
-          </div>
+          <button class="btn-cart" onclick="addToCart('gid://shopify/ProductVariant/45162134929455', this)">Add to Cart</button>
         </div>
       </div>
 
@@ -283,98 +277,69 @@
   </footer>
 
   <script>
-    function initShopify() {
-      var client = ShopifyBuy.buildClient({
-        domain: 'mesdvk-d2.myshopify.com',
-        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
-      });
+    var SHOP = {
+      domain: 'mesdvk-d2.myshopify.com',
+      token: 'd061302ad16f0343c33dc23cc01263ec',
+      checkoutId: null
+    };
 
-      ShopifyBuy.UI.onReady(client).then(function(ui) {
-        ui.createComponent('product', {
-          id: '8224902086703',
-          node: document.getElementById('product-component-1774911721220'),
-          moneyFormat: '%24%7B%7Bamount%7D%7D',
-          options: {
-            product: {
-              contents: { img: false, title: false, price: false },
-              text: { button: 'Add to cart' },
-              styles: {
-                button: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            },
-            cart: {
-              text: { total: 'Subtotal', button: 'Checkout' },
-              styles: {
-                button: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            },
-            toggle: {
-              styles: {
-                toggle: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            }
-          }
-        });
-
-        ui.createComponent('product', {
-          id: '8225463631919',
-          node: document.getElementById('product-component-1774911767340'),
-          moneyFormat: '%24%7B%7Bamount%7D%7D',
-          options: {
-            product: {
-              contents: { img: false, title: false, price: false },
-              text: { button: 'Add to cart' },
-              styles: {
-                button: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            },
-            cart: {
-              text: { total: 'Subtotal', button: 'Checkout' },
-              styles: {
-                button: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            },
-            toggle: {
-              styles: {
-                toggle: {
-                  'background-color': '#2c2218',
-                  ':hover': { 'background-color': '#4b3a29' }
-                }
-              }
-            }
-          }
-        });
+    // Create a new checkout session
+    function createCheckout() {
+      return fetch('https://' + SHOP.domain + '/api/2023-04/graphql.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': SHOP.token
+        },
+        body: JSON.stringify({
+          query: 'mutation { checkoutCreate(input: {}) { checkout { id webUrl } } }'
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        SHOP.checkoutId = d.data.checkoutCreate.checkout.id;
+        SHOP.checkoutUrl = d.data.checkoutCreate.checkout.webUrl;
+        return SHOP.checkoutId;
       });
     }
 
-    function loadSDK() {
-      var sdkScript = document.createElement('script');
-      sdkScript.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      sdkScript.async = true;
-      sdkScript.onload = initShopify;
-      document.head.appendChild(sdkScript);
+    // Add a variant to the checkout and redirect
+    function addToCart(variantId, buttonEl) {
+      buttonEl.textContent = 'Adding...';
+      buttonEl.disabled = true;
+
+      function doAdd(checkoutId) {
+        return fetch('https://' + SHOP.domain + '/api/2023-04/graphql.json', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': SHOP.token
+          },
+          body: JSON.stringify({
+            query: 'mutation checkoutLineItemsAdd($checkoutId: ID!, $lineItems: [CheckoutLineItemInput!]!) { checkoutLineItemsAdd(checkoutId: $checkoutId, lineItems: $lineItems) { checkout { webUrl } } }',
+            variables: {
+              checkoutId: checkoutId,
+              lineItems: [{ variantId: variantId, quantity: 1 }]
+            }
+          })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          var url = d.data.checkoutLineItemsAdd.checkout.webUrl;
+          window.location.href = url;
+        });
+      }
+
+      if (SHOP.checkoutId) {
+        doAdd(SHOP.checkoutId);
+      } else {
+        createCheckout().then(function(id) { doAdd(id); });
+      }
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadSDK);
-    } else {
-      loadSDK();
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      createCheckout();
+    });
 
     var toggle = document.getElementById('navToggle');
     var navLinks = document.getElementById('navLinks');
