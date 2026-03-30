@@ -84,6 +84,9 @@
     .product-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--espresso); margin-bottom: 0.3rem; }
     .product-sub { font-size: 11px; color: var(--brown-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
     .product-price { font-size: 17px; color: var(--espresso); margin-bottom: 1.25rem; }
+    .btn-cart { width: 100%; background: var(--espresso); color: var(--cream); padding: 14px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border: 1.5px solid var(--espresso); cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 400; transition: background 0.2s, color 0.2s; display: block; }
+    .btn-cart:hover { background: transparent; color: var(--espresso); }
+    .btn-cart:disabled { opacity: 0.5; cursor: not-allowed; }
 
     footer { background: var(--espresso); color: #C4B898; padding: 3rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--cream-dark); text-decoration: none; display: block; margin-bottom: 6px; }
@@ -123,7 +126,6 @@
     <a href="#" class="logo">Bocca <em>d'Oro</em></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
-      <li><a href="#groves">The Groves</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -232,8 +234,8 @@
           Product photo
         </div>
         <div class="product-info">
-          <div class="product-name">Extra Vergine</div>
-          <div class="product-sub">250ml · Cold Pressed · Single Grove</div>
+          <div class="product-name">250ml</div>
+          <div class="product-sub">Cold Pressed · Single Grove</div>
           <div class="product-price">$35.00</div>
           <button class="btn-cart" onclick="addToCart('gid://shopify/ProductVariant/45162134700079', this)">Add to Cart</button>
         </div>
@@ -245,8 +247,8 @@
           Product photo
         </div>
         <div class="product-info">
-          <div class="product-name">Extra Vergine</div>
-          <div class="product-sub">500ml · Cold Pressed · Single Grove</div>
+          <div class="product-name">500ml</div>
+          <div class="product-sub">Cold Pressed · Single Grove</div>
           <div class="product-price">$60.00</div>
           <button class="btn-cart" onclick="addToCart('gid://shopify/ProductVariant/45162134929455', this)">Add to Cart</button>
         </div>
