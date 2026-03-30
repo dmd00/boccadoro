@@ -10,400 +10,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --cream: #FAF6EF;
-      --cream-mid: #F0E8D8;
-      --cream-dark: #EDE3D0;
-      --tan: #D4C9B0;
-      --tan-light: #D4C9A8;
-      --gold: #B8A882;
-      --gold-dark: #7A6435;
-      --espresso: #2C2218;
-      --brown: #6B5B3E;
-      --brown-light: #9B8B6A;
-      --it-green: #009246;
-      --it-white: #FFFFFF;
-      --it-red: #CE2B37;
+      --cream: #FAF6EF; --cream-mid: #F0E8D8; --cream-dark: #EDE3D0;
+      --tan: #D4C9B0; --tan-light: #D4C9A8; --gold: #B8A882; --gold-dark: #7A6435;
+      --espresso: #2C2218; --brown: #6B5B3E; --brown-light: #9B8B6A;
+      --it-green: #009246; --it-red: #CE2B37;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; font-weight: 300; color: var(--espresso); background: var(--cream); line-height: 1.7; }
 
-    body {
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      color: var(--espresso);
-      background: var(--cream);
-      line-height: 1.7;
-    }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--cream);
-      border-bottom: 0.5px solid var(--tan);
-      padding: 0 3rem;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--espresso);
-      text-decoration: none;
-    }
+    nav { background: var(--cream); border-bottom: 0.5px solid var(--tan); padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; letter-spacing: 0.04em; color: var(--espresso); text-decoration: none; }
     .logo em { font-style: italic; color: var(--gold-dark); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--brown);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--espresso); }
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .nav-toggle span { display: block; width: 24px; height: 1px; background: var(--espresso); }
 
-    /* ── TRICOLORE ── */
     .tricolore { display: flex; height: 4px; width: 100%; }
     .tricolore .tc-g { background: var(--it-green); flex: 1; }
-    .tricolore .tc-w { background: var(--it-white); flex: 1; }
+    .tricolore .tc-w { background: #fff; flex: 1; }
     .tricolore .tc-r { background: var(--it-red); flex: 1; }
 
-    /* ── HERO ── */
-    .hero {
-      background: var(--cream-dark);
-      min-height: 540px;
-      display: flex;
-      align-items: center;
-      padding: 5rem 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 75% 50%, #D4C9A8 0%, transparent 65%);
-      opacity: 0.6;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 580px;
-      animation: fadeUp 0.9s ease both;
-    }
-    .hero-olive {
-      position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.15;
-      pointer-events: none;
-    }
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .flag-inline {
-      display: inline-flex;
-      height: 13px;
-      width: 20px;
-      border: 0.5px solid rgba(0,0,0,0.13);
-      overflow: hidden;
-      border-radius: 1px;
-      flex-shrink: 0;
-    }
+    .hero { background: var(--cream-dark); min-height: 540px; display: flex; align-items: center; padding: 5rem 3rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, #D4C9A8 0%, transparent 65%); opacity: 0.6; }
+    .hero-content { position: relative; z-index: 1; max-width: 580px; animation: fadeUp 0.9s ease both; }
+    .hero-olive { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); opacity: 0.15; pointer-events: none; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
+    .flag-inline { display: inline-flex; height: 13px; width: 20px; border: 0.5px solid rgba(0,0,0,0.13); overflow: hidden; border-radius: 1px; flex-shrink: 0; }
     .flag-inline span { flex: 1; display: block; }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px, 5vw, 52px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--espresso);
-      margin-bottom: 1.25rem;
-    }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 52px); font-weight: 400; line-height: 1.15; color: var(--espresso); margin-bottom: 1.25rem; }
     h1 em { font-style: italic; color: var(--gold-dark); }
-    .hero-sub {
-      font-size: 16px;
-      color: var(--brown);
-      line-height: 1.75;
-      margin-bottom: 2.25rem;
-      max-width: 460px;
-    }
+    .hero-sub { font-size: 16px; color: var(--brown); line-height: 1.75; margin-bottom: 2.25rem; max-width: 460px; }
     .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--espresso);
-      color: var(--cream);
-      padding: 14px 32px;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1.5px solid var(--espresso);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, color 0.2s;
-    }
+    .btn-primary { background: var(--espresso); color: var(--cream); padding: 14px 32px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border: 1.5px solid var(--espresso); cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 400; text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s; }
     .btn-primary:hover { background: transparent; color: var(--espresso); }
-    .btn-outline {
-      background: transparent;
-      color: var(--espresso);
-      padding: 14px 32px;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1.5px solid var(--espresso);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, color 0.2s;
-    }
+    .btn-outline { background: transparent; color: var(--espresso); padding: 14px 32px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border: 1.5px solid var(--espresso); cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 400; text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s; }
     .btn-outline:hover { background: var(--espresso); color: var(--cream); }
 
-    /* ── SECTIONS ── */
     section { padding: 5rem 3rem; }
     section.alt { background: var(--cream-mid); }
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.6rem;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 3.5vw, 36px);
-      font-weight: 400;
-      color: var(--espresso);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
+    .section-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.6rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.5vw, 36px); font-weight: 400; color: var(--espresso); line-height: 1.25; margin-bottom: 1rem; }
     .divider { width: 44px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
     .body-text { font-size: 15px; color: var(--brown); line-height: 1.85; max-width: 540px; }
 
-    /* ── PILLARS ── */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-    .pillar {
-      background: var(--cream);
-      border: 0.5px solid var(--tan);
-      padding: 2rem 1.75rem;
-      transition: border-color 0.2s;
-    }
+    .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .pillar { background: var(--cream); border: 0.5px solid var(--tan); padding: 2rem 1.75rem; transition: border-color 0.2s; }
     .pillar:hover { border-color: var(--gold); }
-    .pillar-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      color: var(--gold);
-      font-weight: 400;
-      line-height: 1;
-      margin-bottom: 0.75rem;
-    }
-    .pillar-label {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.6rem;
-    }
+    .pillar-num { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--gold); font-weight: 400; line-height: 1; margin-bottom: 0.75rem; }
+    .pillar-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.6rem; }
     .pillar-text { font-size: 14px; color: var(--brown); line-height: 1.7; }
 
-    /* ── SCARCITY BANNER ── */
-    .scarcity {
-      background: var(--espresso);
-      padding: 3rem;
-      text-align: center;
-    }
-    .scarcity-label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .scarcity-text {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--cream-dark);
-      line-height: 1.4;
-      max-width: 640px;
-      margin: 0 auto 1.5rem;
-    }
-    .scarcity-sub {
-      font-size: 13px;
-      color: var(--brown-light);
-      letter-spacing: 0.04em;
-      max-width: 480px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
+    .scarcity { background: var(--espresso); padding: 3rem; text-align: center; }
+    .scarcity-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .scarcity-text { font-family: 'Playfair Display', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 400; font-style: italic; color: var(--cream-dark); line-height: 1.4; max-width: 640px; margin: 0 auto 1.5rem; }
+    .scarcity-sub { font-size: 13px; color: var(--brown-light); letter-spacing: 0.04em; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
 
-    /* ── STORY ── */
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .story-img {
-      background: var(--tan-light);
-      border: 0.5px solid var(--tan);
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--brown-light);
-      font-size: 13px;
-      letter-spacing: 0.08em;
-    }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .story-img { background: var(--tan-light); border: 0.5px solid var(--tan); min-height: 420px; display: flex; align-items: center; justify-content: center; color: var(--brown-light); font-size: 13px; letter-spacing: 0.08em; }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     blockquote { border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0 0; }
-    blockquote p {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 18px;
-      color: #4A3A28;
-      line-height: 1.55;
-    }
-    blockquote cite {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--brown-light);
-      margin-top: 0.75rem;
-      font-style: normal;
-    }
+    blockquote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: #4A3A28; line-height: 1.55; }
+    blockquote cite { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-light); margin-top: 0.75rem; font-style: normal; }
 
-    /* ── SHOP ── */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 480px));
-      gap: 2rem;
-      margin-top: 2.5rem;
-      justify-content: center;
-    }
-    .product-card {
-      background: var(--cream);
-      border: 0.5px solid var(--tan);
-      transition: border-color 0.2s;
-    }
+    .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 480px)); gap: 2rem; margin-top: 2.5rem; justify-content: center; }
+    .product-card { background: var(--cream); border: 0.5px solid var(--tan); transition: border-color 0.2s; }
     .product-card:hover { border-color: var(--gold); }
-    .product-img {
-      height: 260px;
-      background: var(--tan-light);
-      border-bottom: 0.5px solid var(--tan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--brown-light);
-      font-size: 12px;
-      letter-spacing: 0.06em;
-    }
+    .product-img { height: 260px; background: var(--tan-light); border-bottom: 0.5px solid var(--tan); display: flex; align-items: center; justify-content: center; color: var(--brown-light); font-size: 12px; letter-spacing: 0.06em; overflow: hidden; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .product-info { padding: 1.5rem; }
-    .product-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--espresso);
-      margin-bottom: 0.3rem;
-    }
-    .product-sub {
-      font-size: 11px;
-      color: var(--brown-light);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-    .product-price {
-      font-size: 17px;
-      color: var(--espresso);
-      margin-bottom: 1.25rem;
-    }
-
-    /* Shopify Buy Button container — removes default margins/widths */
+    .product-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--espresso); margin-bottom: 0.3rem; }
+    .product-sub { font-size: 11px; color: var(--brown-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .product-price { font-size: 17px; color: var(--espresso); margin-bottom: 1.25rem; }
     .shopify-buy-btn-wrap { width: 100%; }
     .shopify-buy-btn-wrap > div { max-width: 100% !important; margin: 0 !important; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--espresso);
-      color: #C4B898;
-      padding: 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--cream-dark);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 6px;
-    }
+    footer { background: var(--espresso); color: #C4B898; padding: 3rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--cream-dark); text-decoration: none; display: block; margin-bottom: 6px; }
     .footer-origin { display: flex; align-items: center; gap: 7px; }
     .footer-flag { display: flex; height: 11px; width: 17px; overflow: hidden; border-radius: 1px; opacity: 0.75; }
     .footer-flag span { flex: 1; display: block; }
     .footer-origin span { font-size: 11px; color: #7A6B58; letter-spacing: 0.08em; }
     .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-    .footer-links a {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #9B8B6A;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9B8B6A; text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--cream-dark); }
     .footer-copy { font-size: 11px; color: #5A4E40; margin-top: 6px; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); border-bottom: 0.5px solid var(--tan); padding: 1.5rem; gap: 1.25rem; z-index: 99; }
@@ -423,7 +121,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="logo">Bocca <em>d'Oro</em></a>
     <ul class="nav-links" id="navLinks">
@@ -437,14 +134,10 @@
     </button>
   </nav>
 
-  <!-- TRICOLORE STRIPE -->
   <div class="tricolore">
-    <div class="tc-g"></div>
-    <div class="tc-w"></div>
-    <div class="tc-r"></div>
+    <div class="tc-g"></div><div class="tc-w"></div><div class="tc-r"></div>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <svg class="hero-olive" width="380" height="380" viewBox="0 0 380 380" aria-hidden="true">
@@ -470,9 +163,7 @@
         Puglia, Italia — Serracapriola
       </div>
       <h1>From our groves,<br><em>to your table.</em></h1>
-      <p class="hero-sub">
-        Mario DiCesare came to America from his humble roots as a farmer in Italy to provide a better life for his family. With our oil, we hope to bring a bit of those roots — and that stellar flavor — back to America.
-      </p>
+      <p class="hero-sub">Mario DiCesare came to America from his humble roots as a farmer in Italy to provide a better life for his family. With our oil, we hope to bring a bit of those roots — and that stellar flavor — back to America.</p>
       <div class="btn-row">
         <a href="#shop" class="btn-primary">Shop Now</a>
         <a href="#story" class="btn-outline">Our Story</a>
@@ -480,7 +171,6 @@
     </div>
   </section>
 
-  <!-- PILLARS -->
   <section id="groves">
     <p class="section-label reveal">L'azienda</p>
     <h2 class="reveal">Three generations.<br>One pursuit.</h2>
@@ -489,105 +179,81 @@
       <div class="pillar reveal">
         <div class="pillar-num">I</div>
         <div class="pillar-label">The Land</div>
-        <p class="pillar-text">
-          Puglia is already world renowned for its bountiful harvest — and even amongst this already excellent crop, our oil is among the best in the world.
-        </p>
+        <p class="pillar-text">Puglia is already world renowned for its bountiful harvest — and even amongst this already excellent crop, our oil is among the best in the world.</p>
       </div>
       <div class="pillar reveal">
         <div class="pillar-num">II</div>
         <div class="pillar-label">The Harvest</div>
-        <p class="pillar-text">
-          Each October, we begin harvesting — picking the olives by hand, taking only the best, and collecting them for pressing. No pesticides, no chemicals. Just olives, and nothing else.
-        </p>
+        <p class="pillar-text">Each October, we begin harvesting — picking the olives by hand, taking only the best, and collecting them for pressing. No pesticides, no chemicals. Just olives, and nothing else.</p>
       </div>
       <div class="pillar reveal">
         <div class="pillar-num">III</div>
         <div class="pillar-label">The Oil</div>
-        <p class="pillar-text">
-          Each bottle is made from one grove, in one place — no mixing across countries, no changing flavor profiles. Ultra-premium quality, and you can taste the difference.
-        </p>
+        <p class="pillar-text">Each bottle is made from one grove, in one place — no mixing across countries, no changing flavor profiles. Ultra-premium quality, and you can taste the difference.</p>
       </div>
     </div>
   </section>
 
-  <!-- SCARCITY BANNER -->
   <div class="scarcity">
     <p class="scarcity-label reveal">A note on availability</p>
-    <p class="scarcity-text reveal">
-      "Some harvests are more bountiful than others, and some are less. We only sell what we produce — so when we run out, we run out."
-    </p>
-    <p class="scarcity-sub reveal">
-      Every bottle of Bocca d'Oro is the product of a single season, a single grove, and the hands of our family. There is no restocking from another source. If you find it, don't wait.
-    </p>
+    <p class="scarcity-text reveal">"Some harvests are more bountiful than others, and some are less. We only sell what we produce — so when we run out, we run out."</p>
+    <p class="scarcity-sub reveal">Every bottle of Bocca d'Oro is the product of a single season, a single grove, and the hands of our family. There is no restocking from another source. If you find it, don't wait.</p>
     <a href="#shop" class="btn-primary reveal">Shop the Current Harvest</a>
   </div>
 
-  <!-- STORY -->
   <section class="alt" id="story">
     <div class="story-grid">
       <div>
         <p class="section-label reveal">La nostra storia</p>
         <h2 class="reveal">A family rooted<br>in the grove.</h2>
         <div class="divider reveal"></div>
-        <p class="body-text reveal">
-          Mario and his wife came to America from Serracapriola, a small town in Puglia, Italy, with their little son in tow — seeking gainful employment and following the American dream, but never leaving their Italian roots behind. The farm stayed within the family, and only those close to them worked the land while he was away.
-        </p>
-        <p class="body-text reveal" style="margin-top:1.25rem;">
-          Frequent trips back home to tend to the orchard, participate in the harvest and processing, and bring back oil to their expanding family and newfound friends in America color the history of this oil. Mario always had pride in his oil and wanted to do more with it — but his focus was on his family and his work here in America first. He made a wonderful life for his children, his grandchildren, and his great-grandchildren.
-        </p>
-        <p class="body-text reveal" style="margin-top:1.25rem;">
-          Now, to honor his memory after his passing, the DiCesares are sharing the oil with the world — so that others may come to enjoy it with their own family meals.
-        </p>
+        <p class="body-text reveal">Mario and his wife came to America from Serracapriola, a small town in Puglia, Italy, with their little son in tow — seeking gainful employment and following the American dream, but never leaving their Italian roots behind. The farm stayed within the family, and only those close to them worked the land while he was away.</p>
+        <p class="body-text reveal" style="margin-top:1.25rem;">Frequent trips back home to tend to the orchard, participate in the harvest and processing, and bring back oil to their expanding family and newfound friends in America color the history of this oil. Mario always had pride in his oil and wanted to do more with it — but his focus was on his family and his work here in America first. He made a wonderful life for his children, his grandchildren, and his great-grandchildren.</p>
+        <p class="body-text reveal" style="margin-top:1.25rem;">Now, to honor his memory after his passing, the DiCesares are sharing the oil with the world — so that others may come to enjoy it with their own family meals.</p>
         <blockquote class="reveal">
           <p>"Three generations of DiCesares have collaborated to bring this oil to the US, and for good reason."</p>
           <cite>— The DiCesare Family</cite>
         </blockquote>
       </div>
       <div class="story-img reveal">
-        <!-- Replace with your photo:
-        <img src="images/family.jpg" alt="The DiCesare family at the grove" style="width:100%;height:100%;object-fit:cover;"> -->
+        <!-- Replace with: <img src="images/family.jpg" alt="The DiCesare family at the grove"> -->
         Photo of family / groves
       </div>
     </div>
   </section>
 
-  <!-- SHOP -->
   <section id="shop">
     <p class="section-label reveal">Il negozio</p>
     <h2 class="reveal">The collection.</h2>
     <div class="divider reveal"></div>
     <div class="product-grid">
 
-      <!-- 250ml PRODUCT CARD -->
       <div class="product-card reveal">
         <div class="product-img">
-          <!-- <img src="images/250ml.jpg" alt="Bocca d'Oro 250ml"> -->
+          <!-- Replace with: <img src="images/250ml.jpg" alt="Bocca d'Oro 250ml"> -->
           Product photo
         </div>
         <div class="product-info">
           <div class="product-name">Extra Vergine</div>
           <div class="product-sub">250ml · Cold Pressed · Single Grove</div>
           <div class="product-price">$35.00</div>
-          <!-- SHOPIFY BUY BUTTON — 250ml -->
           <div class="shopify-buy-btn-wrap">
-            <div id='product-component-1774911721220'></div>
+            <div id="product-component-1774911721220"></div>
           </div>
         </div>
       </div>
 
-      <!-- 500ml PRODUCT CARD -->
       <div class="product-card reveal">
         <div class="product-img">
-          <!-- <img src="images/500ml.jpg" alt="Bocca d'Oro 500ml"> -->
+          <!-- Replace with: <img src="images/500ml.jpg" alt="Bocca d'Oro 500ml"> -->
           Product photo
         </div>
         <div class="product-info">
           <div class="product-name">Extra Vergine</div>
           <div class="product-sub">500ml · Cold Pressed · Single Grove</div>
           <div class="product-price">$60.00</div>
-          <!-- SHOPIFY BUY BUTTON — 500ml -->
           <div class="shopify-buy-btn-wrap">
-            <div id='product-component-1774911767340'></div>
+            <div id="product-component-1774911767340"></div>
           </div>
         </div>
       </div>
@@ -595,7 +261,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer id="contact">
     <div>
       <a href="#" class="footer-logo">Bocca d'Oro</a>
@@ -607,201 +272,102 @@
         </div>
         <span>Serracapriola, Puglia — Italia</span>
       </div>
-      <p class="footer-copy" style="margin-top:8px;">© 2025 Bocca d'Oro. All rights reserved.</p>
+      <p class="footer-copy" style="margin-top:8px;">2025 Bocca d'Oro. All rights reserved.</p>
     </div>
     <ul class="footer-links">
       <li><a href="#story">Our Story</a></li>
       <li><a href="#groves">The Groves</a></li>
       <li><a href="#shop">Shop</a></li>
-      <li><a href="mailto:hello@boccadoro.com">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </footer>
 
-  <!-- SHOPIFY BUY BUTTON SCRIPTS -->
-  <!-- 250ml -->
-  <script type="text/javascript">
-  /*<![CDATA[*/
-  (function () {
-    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    if (window.ShopifyBuy) {
-      if (window.ShopifyBuy.UI) {
-        ShopifyBuyInit250();
-      } else {
-        loadScript250();
-      }
-    } else {
-      loadScript250();
-    }
-    function loadScript250() {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = scriptURL;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-      script.onload = ShopifyBuyInit250;
-    }
-    function ShopifyBuyInit250() {
-      var client = ShopifyBuy.buildClient({
-        domain: 'mesdvk-d2.myshopify.com',
-        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
-      });
-      ShopifyBuy.UI.onReady(client).then(function (ui) {
-        ui.createComponent('product', {
-          id: '8224902086703',
-          node: document.getElementById('product-component-1774911721220'),
-          moneyFormat: '%24%7B%7Bamount%7D%7D',
-          options: {
-            "product": {
-              "styles": {
-                "product": {
-                  "@media (min-width: 601px)": {
-                    "max-width": "100%",
-                    "margin-left": "0px",
-                    "margin-bottom": "0px"
-                  }
-                },
-                "button": {
-                  "font-family": "Lato, sans-serif",
-                  "font-size": "12px",
-                  "letter-spacing": "0.12em",
-                  "text-transform": "uppercase",
-                  "padding-top": "14px",
-                  "padding-bottom": "14px",
-                  "width": "100%",
-                  ":hover": { "background-color": "#4b3a29" },
-                  "background-color": "#2c2218",
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              },
-              "contents": { "img": false, "title": false, "price": false },
-              "text": { "button": "Add to cart" }
-            },
-            "cart": {
-              "styles": {
-                "button": {
-                  ":hover": { "background-color": "#4b3a29" },
-                  "background-color": "#2c2218",
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              },
-              "text": { "total": "Subtotal", "button": "Checkout" }
-            },
-            "toggle": {
-              "styles": {
-                "toggle": {
-                  "background-color": "#2c2218",
-                  ":hover": { "background-color": "#4b3a29" },
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              }
-            }
-          },
-        });
-      });
-    }
-  })();
-  /*]]>*/
-  </script>
-
-  <!-- 500ml -->
-  <script type="text/javascript">
-  /*<![CDATA[*/
-  (function () {
-    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    if (window.ShopifyBuy) {
-      if (window.ShopifyBuy.UI) {
-        ShopifyBuyInit500();
-      } else {
-        loadScript500();
-      }
-    } else {
-      loadScript500();
-    }
-    function loadScript500() {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = scriptURL;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-      script.onload = ShopifyBuyInit500;
-    }
-    function ShopifyBuyInit500() {
-      var client = ShopifyBuy.buildClient({
-        domain: 'mesdvk-d2.myshopify.com',
-        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
-      });
-      ShopifyBuy.UI.onReady(client).then(function (ui) {
-        ui.createComponent('product', {
-          id: '8225463631919',
-          node: document.getElementById('product-component-1774911767340'),
-          moneyFormat: '%24%7B%7Bamount%7D%7D',
-          options: {
-            "product": {
-              "styles": {
-                "product": {
-                  "@media (min-width: 601px)": {
-                    "max-width": "100%",
-                    "margin-left": "0px",
-                    "margin-bottom": "0px"
-                  }
-                },
-                "button": {
-                  "font-family": "Lato, sans-serif",
-                  "font-size": "12px",
-                  "letter-spacing": "0.12em",
-                  "text-transform": "uppercase",
-                  "padding-top": "14px",
-                  "padding-bottom": "14px",
-                  "width": "100%",
-                  ":hover": { "background-color": "#4b3a29" },
-                  "background-color": "#2c2218",
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              },
-              "contents": { "img": false, "title": false, "price": false },
-              "text": { "button": "Add to cart" }
-            },
-            "cart": {
-              "styles": {
-                "button": {
-                  ":hover": { "background-color": "#4b3a29" },
-                  "background-color": "#2c2218",
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              },
-              "text": { "total": "Subtotal", "button": "Checkout" }
-            },
-            "toggle": {
-              "styles": {
-                "toggle": {
-                  "background-color": "#2c2218",
-                  ":hover": { "background-color": "#4b3a29" },
-                  ":focus": { "background-color": "#4b3a29" }
-                }
-              }
-            }
-          },
-        });
-      });
-    }
-  })();
-  /*]]>*/
-  </script>
-
   <script>
-    const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    function initShopify() {
+      var client = ShopifyBuy.buildClient({
+        domain: 'mesdvk-d2.myshopify.com',
+        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
+      });
 
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      var buttonOptions = function(nodeId, productId) {
+        return {
+          id: productId,
+          node: document.getElementById(nodeId),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {
+            product: {
+              styles: {
+                product: {
+                  '@media (min-width: 601px)': { 'max-width': '100%', 'margin-left': '0px', 'margin-bottom': '0px' }
+                },
+                button: {
+                  'font-family': 'Lato, sans-serif',
+                  'font-size': '12px',
+                  'letter-spacing': '0.12em',
+                  'text-transform': 'uppercase',
+                  'padding-top': '14px',
+                  'padding-bottom': '14px',
+                  'width': '100%',
+                  'background-color': '#2c2218',
+                  ':hover': { 'background-color': '#4b3a29' },
+                  ':focus': { 'background-color': '#4b3a29' }
+                }
+              },
+              contents: { img: false, title: false, price: false },
+              text: { button: 'Add to cart' }
+            },
+            cart: {
+              styles: {
+                button: {
+                  'background-color': '#2c2218',
+                  ':hover': { 'background-color': '#4b3a29' },
+                  ':focus': { 'background-color': '#4b3a29' }
+                }
+              },
+              text: { total: 'Subtotal', button: 'Checkout' }
+            },
+            toggle: {
+              styles: {
+                toggle: {
+                  'background-color': '#2c2218',
+                  ':hover': { 'background-color': '#4b3a29' },
+                  ':focus': { 'background-color': '#4b3a29' }
+                }
+              }
+            }
+          }
+        };
+      };
+
+      ShopifyBuy.UI.onReady(client).then(function(ui) {
+        ui.createComponent('product', buttonOptions('product-component-1774911721220', '8224902086703'));
+        ui.createComponent('product', buttonOptions('product-component-1774911767340', '8225463631919'));
+      });
+    }
+
+    var sdkScript = document.createElement('script');
+    sdkScript.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    sdkScript.async = true;
+    sdkScript.onload = initShopify;
+    document.head.appendChild(sdkScript);
+
+    var toggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { navLinks.classList.remove('open'); });
+    });
+
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
+    reveals.forEach(function(el) { observer.observe(el); });
   </script>
 
 </body>
