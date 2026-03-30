@@ -50,7 +50,6 @@
       top: 0;
       z-index: 100;
     }
-
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
@@ -59,16 +58,8 @@
       color: var(--espresso);
       text-decoration: none;
     }
-    .logo em {
-      font-style: italic;
-      color: var(--gold-dark);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .logo em { font-style: italic; color: var(--gold-dark); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-size: 12px;
       letter-spacing: 0.1em;
@@ -78,7 +69,6 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--espresso); }
-
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -88,20 +78,10 @@
       border: none;
       padding: 4px;
     }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--espresso);
-      transition: all 0.3s;
-    }
+    .nav-toggle span { display: block; width: 24px; height: 1px; background: var(--espresso); }
 
-    /* ── TRICOLORE STRIPE ── */
-    .tricolore {
-      display: flex;
-      height: 4px;
-      width: 100%;
-    }
+    /* ── TRICOLORE ── */
+    .tricolore { display: flex; height: 4px; width: 100%; }
     .tricolore .tc-g { background: var(--it-green); flex: 1; }
     .tricolore .tc-w { background: var(--it-white); flex: 1; }
     .tricolore .tc-r { background: var(--it-red); flex: 1; }
@@ -116,21 +96,18 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 75% 50%, #D4C9A8 0%, transparent 65%);
       opacity: 0.6;
     }
-
     .hero-content {
       position: relative;
       z-index: 1;
       max-width: 580px;
       animation: fadeUp 0.9s ease both;
     }
-
     .hero-olive {
       position: absolute;
       right: 5%;
@@ -139,7 +116,6 @@
       opacity: 0.15;
       pointer-events: none;
     }
-
     .eyebrow {
       font-size: 11px;
       letter-spacing: 0.18em;
@@ -150,7 +126,6 @@
       align-items: center;
       gap: 8px;
     }
-
     .flag-inline {
       display: inline-flex;
       height: 13px;
@@ -161,7 +136,6 @@
       flex-shrink: 0;
     }
     .flag-inline span { flex: 1; display: block; }
-
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(34px, 5vw, 52px);
@@ -170,11 +144,7 @@
       color: var(--espresso);
       margin-bottom: 1.25rem;
     }
-    h1 em {
-      font-style: italic;
-      color: var(--gold-dark);
-    }
-
+    h1 em { font-style: italic; color: var(--gold-dark); }
     .hero-sub {
       font-size: 16px;
       color: var(--brown);
@@ -182,13 +152,7 @@
       margin-bottom: 2.25rem;
       max-width: 460px;
     }
-
-    .btn-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       background: var(--espresso);
       color: var(--cream);
@@ -204,11 +168,7 @@
       display: inline-block;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--espresso);
-    }
-
+    .btn-primary:hover { background: transparent; color: var(--espresso); }
     .btn-outline {
       background: transparent;
       color: var(--espresso);
@@ -224,15 +184,11 @@
       display: inline-block;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-outline:hover {
-      background: var(--espresso);
-      color: var(--cream);
-    }
+    .btn-outline:hover { background: var(--espresso); color: var(--cream); }
 
     /* ── SECTIONS ── */
     section { padding: 5rem 3rem; }
     section.alt { background: var(--cream-mid); }
-
     .section-label {
       font-size: 11px;
       letter-spacing: 0.18em;
@@ -240,7 +196,6 @@
       color: var(--gold-dark);
       margin-bottom: 0.6rem;
     }
-
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(26px, 3.5vw, 36px);
@@ -249,20 +204,8 @@
       line-height: 1.25;
       margin-bottom: 1rem;
     }
-
-    .divider {
-      width: 44px;
-      height: 1px;
-      background: var(--gold);
-      margin-bottom: 2rem;
-    }
-
-    .body-text {
-      font-size: 15px;
-      color: var(--brown);
-      line-height: 1.85;
-      max-width: 540px;
-    }
+    .divider { width: 44px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+    .body-text { font-size: 15px; color: var(--brown); line-height: 1.85; max-width: 540px; }
 
     /* ── PILLARS ── */
     .pillars {
@@ -271,7 +214,6 @@
       gap: 1.5rem;
       margin-top: 2.5rem;
     }
-
     .pillar {
       background: var(--cream);
       border: 0.5px solid var(--tan);
@@ -279,7 +221,6 @@
       transition: border-color 0.2s;
     }
     .pillar:hover { border-color: var(--gold); }
-
     .pillar-num {
       font-family: 'Playfair Display', serif;
       font-size: 40px;
@@ -288,7 +229,6 @@
       line-height: 1;
       margin-bottom: 0.75rem;
     }
-
     .pillar-label {
       font-size: 12px;
       letter-spacing: 0.1em;
@@ -296,10 +236,37 @@
       color: var(--gold-dark);
       margin-bottom: 0.6rem;
     }
+    .pillar-text { font-size: 14px; color: var(--brown); line-height: 1.7; }
 
-    .pillar-text {
-      font-size: 14px;
-      color: var(--brown);
+    /* ── SCARCITY BANNER ── */
+    .scarcity {
+      background: var(--espresso);
+      padding: 3rem;
+      text-align: center;
+    }
+    .scarcity-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .scarcity-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream-dark);
+      line-height: 1.4;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+    }
+    .scarcity-sub {
+      font-size: 13px;
+      color: var(--brown-light);
+      letter-spacing: 0.04em;
+      max-width: 480px;
+      margin: 0 auto 2rem;
       line-height: 1.7;
     }
 
@@ -310,11 +277,10 @@
       gap: 4rem;
       align-items: center;
     }
-
     .story-img {
       background: var(--tan-light);
       border: 0.5px solid var(--tan);
-      min-height: 380px;
+      min-height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -322,12 +288,7 @@
       font-size: 13px;
       letter-spacing: 0.08em;
     }
-
-    blockquote {
-      border-left: 2px solid var(--gold);
-      padding-left: 1.5rem;
-      margin: 2rem 0 0;
-    }
+    blockquote { border-left: 2px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0 0; }
     blockquote p {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -352,14 +313,12 @@
       gap: 1.5rem;
       margin-top: 2.5rem;
     }
-
     .product-card {
       background: var(--cream);
       border: 0.5px solid var(--tan);
       transition: border-color 0.2s;
     }
     .product-card:hover { border-color: var(--gold); }
-
     .product-img {
       height: 200px;
       background: var(--tan-light);
@@ -371,16 +330,13 @@
       font-size: 12px;
       letter-spacing: 0.06em;
     }
-
     .product-info { padding: 1.25rem; }
-
     .product-name {
       font-family: 'Playfair Display', serif;
       font-size: 17px;
       color: var(--espresso);
       margin-bottom: 0.3rem;
     }
-
     .product-sub {
       font-size: 11px;
       color: var(--brown-light);
@@ -388,14 +344,7 @@
       text-transform: uppercase;
       margin-bottom: 0.9rem;
     }
-
-    .product-price {
-      font-size: 15px;
-      color: var(--espresso);
-      margin-bottom: 1rem;
-    }
-
-    /* Shopify Buy Button goes here — replace this placeholder */
+    .product-price { font-size: 15px; color: var(--espresso); margin-bottom: 1rem; }
     .btn-cart {
       width: 100%;
       background: var(--espresso);
@@ -410,10 +359,7 @@
       font-weight: 400;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-cart:hover {
-      background: transparent;
-      color: var(--espresso);
-    }
+    .btn-cart:hover { background: transparent; color: var(--espresso); }
 
     /* ── FOOTER ── */
     footer {
@@ -426,7 +372,6 @@
       flex-wrap: wrap;
       gap: 2rem;
     }
-
     .footer-logo {
       font-family: 'Playfair Display', serif;
       font-size: 20px;
@@ -435,35 +380,11 @@
       display: block;
       margin-bottom: 6px;
     }
-
-    .footer-origin {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .footer-flag {
-      display: flex;
-      height: 11px;
-      width: 17px;
-      overflow: hidden;
-      border-radius: 1px;
-      opacity: 0.75;
-    }
+    .footer-origin { display: flex; align-items: center; gap: 7px; }
+    .footer-flag { display: flex; height: 11px; width: 17px; overflow: hidden; border-radius: 1px; opacity: 0.75; }
     .footer-flag span { flex: 1; display: block; }
-
-    .footer-origin span {
-      font-size: 11px;
-      color: #7A6B58;
-      letter-spacing: 0.08em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+    .footer-origin span { font-size: 11px; color: #7A6B58; letter-spacing: 0.08em; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
     .footer-links a {
       font-size: 12px;
       letter-spacing: 0.08em;
@@ -473,28 +394,19 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--cream-dark); }
-
-    .footer-copy {
-      font-size: 11px;
-      color: #5A4E40;
-      margin-top: 6px;
-    }
+    .footer-copy { font-size: 11px; color: #5A4E40; margin-top: 6px; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -505,16 +417,12 @@
       .hero { padding: 3.5rem 1.5rem; min-height: auto; }
       .hero-olive { display: none; }
       section { padding: 3.5rem 1.5rem; }
+      .scarcity { padding: 3rem 1.5rem; }
       .pillars { grid-template-columns: 1fr; }
       .story-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .story-img { min-height: 240px; }
+      .story-img { min-height: 260px; }
       .product-grid { grid-template-columns: 1fr; }
       footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .pillars { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .product-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
   </style>
 </head>
@@ -564,12 +472,11 @@
           <span style="background:#fff;"></span>
           <span style="background:#CE2B37;"></span>
         </span>
-        Puglia, Italia — dal [YEAR]
+        Puglia, Italia — Serracapriola
       </div>
       <h1>From our groves,<br><em>to your table.</em></h1>
       <p class="hero-sub">
-        <!-- YOUR TAGLINE HERE — one or two sentences about the family, the land, and what makes Bocca d'Oro different. -->
-        Your tagline goes here. Something evocative about the land, the family, and the oil.
+        Mario DiCesare came to America from his humble roots as a farmer in Italy to provide a better life for his family. With our oil, we hope to bring a bit of those roots — and that stellar flavor — back to America.
       </p>
       <div class="btn-row">
         <a href="#shop" class="btn-primary">Shop Now</a>
@@ -588,28 +495,37 @@
         <div class="pillar-num">I</div>
         <div class="pillar-label">The Land</div>
         <p class="pillar-text">
-          <!-- YOUR WRITING HERE — the soil, the climate, what makes Puglia singular. -->
-          Your writing about the land goes here.
+          Puglia is already world renowned for its bountiful harvest — and even amongst this already excellent crop, our oil is among the best in the world.
         </p>
       </div>
       <div class="pillar reveal">
         <div class="pillar-num">II</div>
         <div class="pillar-label">The Harvest</div>
         <p class="pillar-text">
-          <!-- YOUR WRITING HERE — how and when you pick, cold press, the care involved. -->
-          Your writing about the harvest goes here.
+          Each October, we begin harvesting — picking the olives by hand, taking only the best, and collecting them for pressing. No pesticides, no chemicals. Just olives, and nothing else.
         </p>
       </div>
       <div class="pillar reveal">
         <div class="pillar-num">III</div>
         <div class="pillar-label">The Oil</div>
         <p class="pillar-text">
-          <!-- YOUR WRITING HERE — flavor notes, polyphenols, what sets this oil apart. -->
-          Your writing about the oil goes here.
+          Each bottle is made from one grove, in one place — no mixing across countries, no changing flavor profiles. Ultra-premium quality, and you can taste the difference.
         </p>
       </div>
     </div>
   </section>
+
+  <!-- SCARCITY BANNER -->
+  <div class="scarcity">
+    <p class="scarcity-label reveal">A note on availability</p>
+    <p class="scarcity-text reveal">
+      "Some harvests are more bountiful than others, and some are less. We only sell what we produce — so when we run out, we run out."
+    </p>
+    <p class="scarcity-sub reveal">
+      Every bottle of Bocca d'Oro is the product of a single season, a single grove, and the hands of our family. There is no restocking from another source. If you find it, don't wait.
+    </p>
+    <a href="#shop" class="btn-primary reveal">Shop the Current Harvest</a>
+  </div>
 
   <!-- STORY -->
   <section class="alt" id="story">
@@ -619,16 +535,22 @@
         <h2 class="reveal">A family rooted<br>in the grove.</h2>
         <div class="divider reveal"></div>
         <p class="body-text reveal">
-          <!-- YOUR STORY HERE — the family history, who tended the land, what it means across generations. -->
-          Your family story goes here. This is where you write about the history, the people, and what this land has meant to your family.
+          Mario and his wife came to America from Serracapriola, a small town in Puglia, Italy, with their little son in tow — seeking gainful employment and following the American dream, but never leaving their Italian roots behind. The farm stayed within the family, and only those close to them worked the land while he was away.
+        </p>
+        <p class="body-text reveal" style="margin-top:1.25rem;">
+          Frequent trips back home to tend to the orchard, participate in the harvest and processing, and bring back oil to their expanding family and newfound friends in America color the history of this oil. Mario always had pride in his oil and wanted to do more with it — but his focus was on his family and his work here in America first. He made a wonderful life for his children, his grandchildren, and his great-grandchildren.
+        </p>
+        <p class="body-text reveal" style="margin-top:1.25rem;">
+          Now, to honor his memory after his passing, the DiCesares are sharing the oil with the world — so that others may come to enjoy it with their own family meals.
         </p>
         <blockquote class="reveal">
-          <p>"A family quote goes here — something that captures your relationship to this land and this oil."</p>
-          <cite>— Your Name, Bocca d'Oro</cite>
+          <p>"Three generations of DiCesares have collaborated to bring this oil to the US, and for good reason."</p>
+          <cite>— The DiCesare Family</cite>
         </blockquote>
       </div>
       <div class="story-img reveal">
-        <!-- Replace with: <img src="images/family.jpg" alt="The family at the grove" style="width:100%;height:100%;object-fit:cover;"> -->
+        <!-- Replace with your photo:
+        <img src="images/family.jpg" alt="The DiCesare family at the grove" style="width:100%;height:100%;object-fit:cover;"> -->
         Photo of family / groves
       </div>
     </div>
@@ -641,8 +563,8 @@
     <div class="divider reveal"></div>
     <div class="product-grid">
 
-      <!-- PRODUCT 1 -->
-      <!-- Replace .btn-cart with your Shopify Buy Button embed code -->
+      <!-- Replace each .btn-cart with your Shopify Buy Button embed code -->
+
       <div class="product-card reveal">
         <div class="product-img">
           <!-- <img src="images/extra-vergine.jpg" alt="Extra Vergine" style="width:100%;height:100%;object-fit:cover;"> -->
@@ -656,7 +578,6 @@
         </div>
       </div>
 
-      <!-- PRODUCT 2 -->
       <div class="product-card reveal">
         <div class="product-img">
           <!-- <img src="images/riserva.jpg" alt="Riserva" style="width:100%;height:100%;object-fit:cover;"> -->
@@ -670,7 +591,6 @@
         </div>
       </div>
 
-      <!-- PRODUCT 3 -->
       <div class="product-card reveal">
         <div class="product-img">
           <!-- <img src="images/gift-set.jpg" alt="Gift Set" style="width:100%;height:100%;object-fit:cover;"> -->
@@ -697,7 +617,7 @@
           <span style="background:#fff;"></span>
           <span style="background:#CE2B37;"></span>
         </div>
-        <span>Puglia, Italia</span>
+        <span>Serracapriola, Puglia — Italia</span>
       </div>
       <p class="footer-copy" style="margin-top:8px;">© 2025 Bocca d'Oro. All rights reserved.</p>
     </div>
@@ -705,19 +625,16 @@
       <li><a href="#story">Our Story</a></li>
       <li><a href="#groves">The Groves</a></li>
       <li><a href="#shop">Shop</a></li>
-      <!-- Add email or contact link here -->
       <li><a href="mailto:hello@boccadoro.com">Contact</a></li>
     </ul>
   </footer>
 
   <script>
-    // Mobile nav toggle
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
