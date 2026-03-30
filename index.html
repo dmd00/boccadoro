@@ -309,9 +309,10 @@
     /* ── SHOP ── */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 480px));
+      gap: 2rem;
       margin-top: 2.5rem;
+      justify-content: center;
     }
     .product-card {
       background: var(--cream);
@@ -320,7 +321,7 @@
     }
     .product-card:hover { border-color: var(--gold); }
     .product-img {
-      height: 200px;
+      height: 260px;
       background: var(--tan-light);
       border-bottom: 0.5px solid var(--tan);
       display: flex;
@@ -330,10 +331,11 @@
       font-size: 12px;
       letter-spacing: 0.06em;
     }
-    .product-info { padding: 1.25rem; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .product-info { padding: 1.5rem; }
     .product-name {
       font-family: 'Playfair Display', serif;
-      font-size: 17px;
+      font-size: 20px;
       color: var(--espresso);
       margin-bottom: 0.3rem;
     }
@@ -342,24 +344,17 @@
       color: var(--brown-light);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
     }
-    .product-price { font-size: 15px; color: var(--espresso); margin-bottom: 1rem; }
-    .btn-cart {
-      width: 100%;
-      background: var(--espresso);
-      color: var(--cream);
-      padding: 11px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1.5px solid var(--espresso);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      transition: background 0.2s, color 0.2s;
+    .product-price {
+      font-size: 17px;
+      color: var(--espresso);
+      margin-bottom: 1.25rem;
     }
-    .btn-cart:hover { background: transparent; color: var(--espresso); }
+
+    /* Shopify Buy Button container — removes default margins/widths */
+    .shopify-buy-btn-wrap { width: 100%; }
+    .shopify-buy-btn-wrap > div { max-width: 100% !important; margin: 0 !important; }
 
     /* ── FOOTER ── */
     footer {
@@ -563,44 +558,37 @@
     <div class="divider reveal"></div>
     <div class="product-grid">
 
-      <!-- Replace each .btn-cart with your Shopify Buy Button embed code -->
-
+      <!-- 250ml PRODUCT CARD -->
       <div class="product-card reveal">
         <div class="product-img">
-          <!-- <img src="images/extra-vergine.jpg" alt="Extra Vergine" style="width:100%;height:100%;object-fit:cover;"> -->
+          <!-- <img src="images/250ml.jpg" alt="Bocca d'Oro 250ml"> -->
           Product photo
         </div>
         <div class="product-info">
           <div class="product-name">Extra Vergine</div>
-          <div class="product-sub">500ml · Cold Pressed</div>
-          <div class="product-price">$00.00</div>
-          <button class="btn-cart">Add to Cart</button>
+          <div class="product-sub">250ml · Cold Pressed · Single Grove</div>
+          <div class="product-price">$35.00</div>
+          <!-- SHOPIFY BUY BUTTON — 250ml -->
+          <div class="shopify-buy-btn-wrap">
+            <div id='product-component-1774911721220'></div>
+          </div>
         </div>
       </div>
 
+      <!-- 500ml PRODUCT CARD -->
       <div class="product-card reveal">
         <div class="product-img">
-          <!-- <img src="images/riserva.jpg" alt="Riserva" style="width:100%;height:100%;object-fit:cover;"> -->
+          <!-- <img src="images/500ml.jpg" alt="Bocca d'Oro 500ml"> -->
           Product photo
         </div>
         <div class="product-info">
-          <div class="product-name">Riserva</div>
-          <div class="product-sub">500ml · Single Harvest</div>
-          <div class="product-price">$00.00</div>
-          <button class="btn-cart">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-img">
-          <!-- <img src="images/gift-set.jpg" alt="Gift Set" style="width:100%;height:100%;object-fit:cover;"> -->
-          Product photo
-        </div>
-        <div class="product-info">
-          <div class="product-name">Gift Set</div>
-          <div class="product-sub">2 × 250ml · Curated</div>
-          <div class="product-price">$00.00</div>
-          <button class="btn-cart">Add to Cart</button>
+          <div class="product-name">Extra Vergine</div>
+          <div class="product-sub">500ml · Cold Pressed · Single Grove</div>
+          <div class="product-price">$60.00</div>
+          <!-- SHOPIFY BUY BUTTON — 500ml -->
+          <div class="shopify-buy-btn-wrap">
+            <div id='product-component-1774911767340'></div>
+          </div>
         </div>
       </div>
 
@@ -628,6 +616,175 @@
       <li><a href="mailto:hello@boccadoro.com">Contact</a></li>
     </ul>
   </footer>
+
+  <!-- SHOPIFY BUY BUTTON SCRIPTS -->
+  <!-- 250ml -->
+  <script type="text/javascript">
+  /*<![CDATA[*/
+  (function () {
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    if (window.ShopifyBuy) {
+      if (window.ShopifyBuy.UI) {
+        ShopifyBuyInit250();
+      } else {
+        loadScript250();
+      }
+    } else {
+      loadScript250();
+    }
+    function loadScript250() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = scriptURL;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+      script.onload = ShopifyBuyInit250;
+    }
+    function ShopifyBuyInit250() {
+      var client = ShopifyBuy.buildClient({
+        domain: 'mesdvk-d2.myshopify.com',
+        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
+      });
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: '8224902086703',
+          node: document.getElementById('product-component-1774911721220'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {
+            "product": {
+              "styles": {
+                "product": {
+                  "@media (min-width: 601px)": {
+                    "max-width": "100%",
+                    "margin-left": "0px",
+                    "margin-bottom": "0px"
+                  }
+                },
+                "button": {
+                  "font-family": "Lato, sans-serif",
+                  "font-size": "12px",
+                  "letter-spacing": "0.12em",
+                  "text-transform": "uppercase",
+                  "padding-top": "14px",
+                  "padding-bottom": "14px",
+                  "width": "100%",
+                  ":hover": { "background-color": "#4b3a29" },
+                  "background-color": "#2c2218",
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              },
+              "contents": { "img": false, "title": false, "price": false },
+              "text": { "button": "Add to cart" }
+            },
+            "cart": {
+              "styles": {
+                "button": {
+                  ":hover": { "background-color": "#4b3a29" },
+                  "background-color": "#2c2218",
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              },
+              "text": { "total": "Subtotal", "button": "Checkout" }
+            },
+            "toggle": {
+              "styles": {
+                "toggle": {
+                  "background-color": "#2c2218",
+                  ":hover": { "background-color": "#4b3a29" },
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              }
+            }
+          },
+        });
+      });
+    }
+  })();
+  /*]]>*/
+  </script>
+
+  <!-- 500ml -->
+  <script type="text/javascript">
+  /*<![CDATA[*/
+  (function () {
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    if (window.ShopifyBuy) {
+      if (window.ShopifyBuy.UI) {
+        ShopifyBuyInit500();
+      } else {
+        loadScript500();
+      }
+    } else {
+      loadScript500();
+    }
+    function loadScript500() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = scriptURL;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+      script.onload = ShopifyBuyInit500;
+    }
+    function ShopifyBuyInit500() {
+      var client = ShopifyBuy.buildClient({
+        domain: 'mesdvk-d2.myshopify.com',
+        storefrontAccessToken: 'd061302ad16f0343c33dc23cc01263ec',
+      });
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: '8225463631919',
+          node: document.getElementById('product-component-1774911767340'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {
+            "product": {
+              "styles": {
+                "product": {
+                  "@media (min-width: 601px)": {
+                    "max-width": "100%",
+                    "margin-left": "0px",
+                    "margin-bottom": "0px"
+                  }
+                },
+                "button": {
+                  "font-family": "Lato, sans-serif",
+                  "font-size": "12px",
+                  "letter-spacing": "0.12em",
+                  "text-transform": "uppercase",
+                  "padding-top": "14px",
+                  "padding-bottom": "14px",
+                  "width": "100%",
+                  ":hover": { "background-color": "#4b3a29" },
+                  "background-color": "#2c2218",
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              },
+              "contents": { "img": false, "title": false, "price": false },
+              "text": { "button": "Add to cart" }
+            },
+            "cart": {
+              "styles": {
+                "button": {
+                  ":hover": { "background-color": "#4b3a29" },
+                  "background-color": "#2c2218",
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              },
+              "text": { "total": "Subtotal", "button": "Checkout" }
+            },
+            "toggle": {
+              "styles": {
+                "toggle": {
+                  "background-color": "#2c2218",
+                  ":hover": { "background-color": "#4b3a29" },
+                  ":focus": { "background-color": "#4b3a29" }
+                }
+              }
+            }
+          },
+        });
+      });
+    }
+  })();
+  /*]]>*/
+  </script>
 
   <script>
     const toggle = document.getElementById('navToggle');
