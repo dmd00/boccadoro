@@ -345,11 +345,19 @@
       });
     }
 
-    var sdkScript = document.createElement('script');
-    sdkScript.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-    sdkScript.async = true;
-    sdkScript.onload = initShopify;
-    document.head.appendChild(sdkScript);
+    function loadSDK() {
+      var sdkScript = document.createElement('script');
+      sdkScript.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      sdkScript.async = true;
+      sdkScript.onload = initShopify;
+      document.head.appendChild(sdkScript);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadSDK);
+    } else {
+      loadSDK();
+    }
 
     var toggle = document.getElementById('navToggle');
     var navLinks = document.getElementById('navLinks');
